@@ -6,14 +6,14 @@ const { generateToken } = require("../../utils/helperFunctions");
 exports.register = async (req, res) => {
   console.log("Received registration request with body:", req.body); // Debug log
   try {
-    let { name, email, phone, profession, city } = req.body;
+    let { name, email, phone, profession,password, role, city } = req.body;
 
-    if (!name || !email || !phone || !profession || !city) {
+    if (!name || !email || !phone || !profession || !city || !password || !role) {
       return res.status(400).json({
-        message: "Name, email, phone, profession and city are required",
+        message: "Name, email, phone, profession, city, password and role are required",
       });
     }
-    const password = "123456789"; // Default password for all users
+    // const password = "123456789"; // Default password for all users
 
     email = email.toLowerCase().trim();
     phone = phone.trim();
@@ -40,13 +40,13 @@ exports.register = async (req, res) => {
       email,
       phone,
       password,
-      role: "trainer",
+      role,
       profession,
       city,
     });
 
     return res.status(201).json({
-      message: `Trainer registered successfully`,
+      message: `User registered successfully`,
       user: {
         id: user._id,
         name: user.name,
