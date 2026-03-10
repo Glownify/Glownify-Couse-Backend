@@ -8,11 +8,11 @@ const PaymentSchema = new mongoose.Schema({
     unique: true
   },
 
-  studentId: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "User",
-    required: true
-  },
+  // studentId: {
+  //   type: mongoose.Schema.Types.ObjectId,
+  //   ref: "User",
+  //   required: true
+  // },
 
   upiId: String,
 
